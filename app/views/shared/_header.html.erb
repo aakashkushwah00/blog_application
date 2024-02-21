@@ -1,0 +1,57 @@
+<div class="container-flouid">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <h3>Blog Application</h3>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <% if current_user && current_user.is_admin? %>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Member</a>
+            </li>
+          </ul>
+      </div>
+
+    <% else %>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Courses</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Blog</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Event</a>
+          </li>
+
+         
+        </ul>
+    <% end %>
+
+
+        <ul class="navbar-nav">
+          <% if current_user %>
+            <li class="nav-item"> <%= link_to 'Edit Account', edit_user_registration_path, class: 'nav-link btn' %> </li>
+            <li class="nav-item"> <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %> </li>
+          
+          <% else %>
+            <li class="nav-item"> <%= link_to 'Sign Up', new_user_registration_path, class: ' btn btn-outline-primary mr-2'  %> </li>
+            <li class="nav-item"> <%= link_to 'Login', new_user_session_path, class: ' btn btn-success mr-2'  %> </li>
+          <% end %>
+        </ul>
+
+
+      </div>
+    </div>
+  </nav>
+</div>
